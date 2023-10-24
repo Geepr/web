@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css"
 import './App.css';
-import './NavBar';
 import {NavBar} from "./NavBar";
 import {useGamesFetch} from "./clients/gameClient";
 import {GameList} from "./components/game/gameList";

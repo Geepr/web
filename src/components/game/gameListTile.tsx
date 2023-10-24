@@ -7,15 +7,14 @@ import {faBoxArchive} from "@fortawesome/free-solid-svg-icons/faBoxArchive";
 
 import './gameListTile.css';
 
-class gameListTileData {
+class GameListTileData {
     public game : Game = null!;
 }
 
-export function GameListTile(data : gameListTileData) {
+export function GameListTile(data : Readonly<GameListTileData>) {
     const game = data.game;
-    const descriptionText =
-        game.archived ? 'This game has been archived' :
-            game.description ? game.description : 'This game has no description...';
+    const gameDescription = game.description ?? 'This game has no description...';
+    const descriptionText = game.archived ? 'This game has been archived' : gameDescription;
     const descriptionClassName = (!game.archived && !game.description) ? 'description-disabled' : '';
     const buttonDisabled = game.archived ? "disabled" : "";
     const icon = game.archived ? faBoxArchive : faAngleRight;
