@@ -1,10 +1,13 @@
 import "bootstrap/dist/css/bootstrap.css"
-import React from 'react';
 import './App.css';
 import './NavBar';
 import {NavBar} from "./NavBar";
+import {useGamesFetch} from "./clients/gameClient";
+import {GameList} from "./components/game/gameList";
 
 function App() {
+    const {games, loading} = useGamesFetch(1);
+
   return (
       <>
       <header className="App-header">
@@ -13,6 +16,7 @@ function App() {
       <div className="container">
         <main role="main">
           <p>Hello!</p>
+            {!loading && <GameList games={games} />}
         </main>
       </div>
     </>
