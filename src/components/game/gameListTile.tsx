@@ -32,7 +32,7 @@ export function GameListTile(data : Readonly<GameListTileData>) {
                 </div>
             </div>
             <div className={'col-12 col-sm-2 d-flex pe-0 ps-0 ps-sm-1'}>
-                <a href='#' className={'btn btn-dark d-flex flex-fill align-items-center ' + buttonDisabled}><FontAwesomeIcon className={'d-flex flex-fill'} icon={icon} /></a>
+                <button className={'btn btn-dark d-flex flex-fill align-items-center ' + buttonDisabled}><FontAwesomeIcon className={'d-flex flex-fill'} icon={icon} /></button>
             </div>
         </div>
     );
