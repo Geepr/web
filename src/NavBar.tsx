@@ -12,13 +12,13 @@ export function NavBar() {
                 <div className="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul className="navbar-nav flex-grow-1">
                         <li className="nav-item">
-                            <a className="nav-link text-white">Link 1</a>
+                            <a href='#' className="nav-link text-white">Link 1</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-white">Link 1</a>
+                            <a href='#' className="nav-link text-white">Link 1</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-white">Link 1</a>
+                            <a href='#' className="nav-link text-white">Link 1</a>
                         </li>
                     </ul>
                 </div>
