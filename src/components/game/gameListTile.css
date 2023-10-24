@@ -1,0 +1,9 @@
+span.description-disabled {
+    font-style: italic;
+    opacity: 50%;
+}
+
+div.game-disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+}
