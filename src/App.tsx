@@ -1,25 +1,35 @@
-import "bootstrap/dist/css/bootstrap.css"
+import {Outlet, Route, Routes} from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {NavBar} from "./NavBar";
-import {useGamesFetch} from "./clients/gameClient";
-import {GameList} from "./components/game/gameList";
+import {NavBar} from './NavBar';
+import {GameListDisplayer} from "./components/game/gameListDisplayer";
 
 function App() {
-    const {games, loading} = useGamesFetch(1);
+    return (
+        <>
+            <Routes>
+                <Route path='/' element={<Layout/>}>
+                    <Route path='games' element={<GameListDisplayer/>}/>
+                </Route>
+            </Routes>
+        </>
+    )
+}
 
-  return (
-      <>
-      <header className="App-header">
-        <NavBar/>
-      </header>
-      <div className="container">
-        <main role="main">
-          <p>Hello!</p>
-            {!loading && <GameList games={games} />}
-        </main>
-      </div>
-    </>
-  );
+function Layout() {
+    return (
+        <>
+            <header className="App-header">
+                <NavBar/>
+            </header>
+            <div className="container">
+                <main role="main">
+                    <Outlet />
+                </main>
+            </div>
+        </>
+    );
 }
 
 export default App;

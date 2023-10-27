@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 export function NavBar() {
     return (
@@ -12,13 +13,7 @@ export function NavBar() {
                 <div className="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul className="navbar-nav flex-grow-1">
                         <li className="nav-item">
-                            <button className="nav-link text-white">Link 1</button>
-                        </li>
-                        <li className="nav-item">
-                            <button className="nav-link text-white">Link 1</button>
-                        </li>
-                        <li className="nav-item">
-                            <button className="nav-link text-white">Link 1</button>
+                            <Link to='/games' className="nav-link text-white">Games</Link>
                         </li>
                     </ul>
                 </div>
