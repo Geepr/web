@@ -30,15 +30,22 @@ export function useGameFetch(id : string) {
 }
 
 export function useGamesFetch(page : number) {
+    //todo: extract common paging elements elsewhere
     const [games, setGames] = useState<Game[]>([]);
     const [loading, setLoading] = useState(true);
+    const [hasPrevPage, setHasPrevPage] = useState(false);
+    const [hasNextPage, setHasNextPage] = useState(false);
+    const pageSize = 2;
 
     useEffect(() => {
         async function load() {
             try {
-                const response = await fetch(`http://localhost:5510/api/v0/games?page=${page}`);
+                setHasNextPage(false);
+                const response = await fetch(`http://localhost:5510/api/v0/games?page=${page}&pageSize=${pageSize}`);
                 if (response.ok) {
                     const json = await response.json();
+                    setHasNextPage(json.length === pageSize);
+                    setHasPrevPage(page !== 1);
                     setGames(json);
                 } else {
                     throw response;
@@ -51,5 +58,5 @@ export function useGamesFetch(page : number) {
         load();
     }, [page]);
 
-    return {games, loading};
+    return {games, loading, hasPrevPage, hasNextPage};
 }
