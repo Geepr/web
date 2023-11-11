@@ -4,6 +4,12 @@ export class PageControlData {
     public Page : number = 1;
     public TotalPages : number = 0;
     public SetPage : Dispatch<React.SetStateAction<number>> = null!;
+
+    constructor(page : number, totalPages : number, setPage : Dispatch<React.SetStateAction<number>>) {
+        this.Page = page;
+        this.TotalPages = totalPages;
+        this.SetPage = setPage;
+    }
 }
 
 export function PageControl(data : Readonly<PageControlData>) {

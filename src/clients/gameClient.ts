@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {Game} from "../models/game";
 import {validate as isValidUuid} from "uuid";
+import {usePagination} from "../components/pagination/usePagination";
 
 export function useGameFetch(id : string) {
     const [game, setGame] = useState<Game | null>(null);
@@ -30,19 +31,18 @@ export function useGameFetch(id : string) {
 }
 
 export function useGamesFetch(page : number) {
-    //todo: extract common paging elements elsewhere
     const [games, setGames] = useState<Game[]>([]);
     const [loading, setLoading] = useState(true);
-    const [totalPages, setTotalPages] = useState(0)
-    const pageSize = 2;
+    const {paginationData, readPaginationDataFromJson} = usePagination();
 
     useEffect(() => {
         async function load() {
             try {
-                const response = await fetch(`http://localhost:5510/api/v0/games?page=${page}&pageSize=${pageSize}`);
+                //todo: page size shouldn't be required here, really
+                const response = await fetch(`http://localhost:5510/api/v0/games?page=${page}&pageSize=20`);
                 if (response.ok) {
                     const json = await response.json();
-                    setTotalPages(json.totalPages);
+                    readPaginationDataFromJson(json);
                     setGames(json.games);
                 } else {
                     throw response;
@@ -55,5 +55,5 @@ export function useGamesFetch(page : number) {
         load();
     }, [page]);
 
-    return {games, loading, totalPages};
+    return {games, loading, paginationData};
 }
