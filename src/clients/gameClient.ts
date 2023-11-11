@@ -35,6 +35,7 @@ export function useGamesFetch(page : number) {
     const [loading, setLoading] = useState(true);
     const [hasPrevPage, setHasPrevPage] = useState(false);
     const [hasNextPage, setHasNextPage] = useState(false);
+    const [totalPages, setTotalPages] = useState(0)
     const pageSize = 2;
 
     useEffect(() => {
@@ -44,9 +45,10 @@ export function useGamesFetch(page : number) {
                 const response = await fetch(`http://localhost:5510/api/v0/games?page=${page}&pageSize=${pageSize}`);
                 if (response.ok) {
                     const json = await response.json();
-                    setHasNextPage(json.length === pageSize);
+                    setHasNextPage(json.page < json.totalPages);
                     setHasPrevPage(page !== 1);
-                    setGames(json);
+                    setTotalPages(json.totalPages);
+                    setGames(json.games);
                 } else {
                     throw response;
                 }
@@ -58,5 +60,5 @@ export function useGamesFetch(page : number) {
         load();
     }, [page]);
 
-    return {games, loading, hasPrevPage, hasNextPage};
+    return {games, loading, hasPrevPage, hasNextPage, totalPages};
 }
