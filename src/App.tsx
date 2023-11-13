@@ -7,13 +7,11 @@ import {GameListDisplayer} from "./components/game/gameListDisplayer";
 
 function App() {
     return (
-        <>
-            <Routes>
-                <Route path='/' element={<Layout/>}>
-                    <Route path='games' element={<GameListDisplayer/>}/>
-                </Route>
-            </Routes>
-        </>
+        <Routes>
+            <Route path='/' element={<Layout/>}>
+                <Route path='games' element={<GameListDisplayer/>}/>
+            </Route>
+        </Routes>
     )
 }
 
