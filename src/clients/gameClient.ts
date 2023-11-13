@@ -1,7 +1,10 @@
 import {useEffect, useState} from "react";
 import {Game} from "../models/game";
 import {validate as isValidUuid} from "uuid";
-import {usePagination} from "../components/pagination/usePagination";
+import {
+    PaginationData,
+    readPaginationDataFromJson
+} from "../components/pagination/paginationHelpers";
 
 export function useGameFetch(id : string) {
     const [game, setGame] = useState<Game | null>(null);
@@ -33,7 +36,7 @@ export function useGameFetch(id : string) {
 export function useGamesFetch(page : number) {
     const [games, setGames] = useState<Game[]>([]);
     const [loading, setLoading] = useState(true);
-    const {paginationData, readPaginationDataFromJson} = usePagination();
+    const [paginationData, setPaginationData] = useState<PaginationData>();
 
     useEffect(() => {
         async function load() {
@@ -42,7 +45,7 @@ export function useGamesFetch(page : number) {
                 const response = await fetch(`http://localhost:5510/api/v0/games?page=${page}&pageSize=20`);
                 if (response.ok) {
                     const json = await response.json();
-                    readPaginationDataFromJson(json);
+                    setPaginationData(readPaginationDataFromJson(json));
                     setGames(json.games);
                 } else {
                     throw response;
