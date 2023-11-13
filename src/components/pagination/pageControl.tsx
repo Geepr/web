@@ -3,7 +3,7 @@ import React, {Dispatch} from "react";
 export class PageControlData {
     public Page : number = 1;
     public TotalPages : number = 0;
-    public SetPage : Dispatch<React.SetStateAction<number>> = null!;
+    public SetPage : Function = null!;
 
     constructor(page : number, totalPages : number, setPage : Dispatch<React.SetStateAction<number>>) {
         this.Page = page;
