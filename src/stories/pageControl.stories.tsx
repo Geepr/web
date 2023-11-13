@@ -25,7 +25,8 @@ export const SinglePage : Story = {
 export const TwoPages : Story = {
     args: { Page: 1, TotalPages: 2, SetPage: null! },
     render: function Render(args) {
-        const[{}, updateArgs] = useArgs();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const[_, updateArgs] = useArgs();
         function setPage(page : number) {
             updateArgs({Page: page});
         }
@@ -37,7 +38,8 @@ export const TwoPages : Story = {
 export const ThreePages : Story = {
     args: { Page: 1, TotalPages: 3, SetPage: null! },
     render: function Render(args) {
-        const[{}, updateArgs] = useArgs();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const[_, updateArgs] = useArgs();
         function setPage(page : number) {
             updateArgs({Page: page});
         }
@@ -49,7 +51,8 @@ export const ThreePages : Story = {
 export const FourPages : Story = {
     args: { Page: 1, TotalPages: 4, SetPage: null! },
     render: function Render(args) {
-        const[{}, updateArgs] = useArgs();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const[_, updateArgs] = useArgs();
         function setPage(page : number) {
             updateArgs({Page: page});
         }
@@ -61,7 +64,8 @@ export const FourPages : Story = {
 export const FivePages : Story = {
     args: { Page: 1, TotalPages: 5, SetPage: null! },
     render: function Render(args) {
-        const[{}, updateArgs] = useArgs();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const[_, updateArgs] = useArgs();
         function setPage(page : number) {
             updateArgs({Page: page});
         }
@@ -73,7 +77,8 @@ export const FivePages : Story = {
 export const LotsOfPages : Story = {
     args: { Page: 1, TotalPages: 80, SetPage: null! },
     render: function Render(args) {
-        const[{}, updateArgs] = useArgs();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const[_, updateArgs] = useArgs();
         function setPage(page : number) {
             updateArgs({Page: page});
         }
