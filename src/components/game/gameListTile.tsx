@@ -6,6 +6,8 @@ import {faAngleRight} from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import {faBoxArchive} from "@fortawesome/free-solid-svg-icons/faBoxArchive";
 
 import './gameListTile.css';
+import {Link} from "react-router-dom";
+import TruncatedText from "../utils/truncatedText";
 
 class GameListTileData {
     public game : Game = null!;
@@ -24,15 +26,15 @@ export function GameListTile(data : Readonly<GameListTileData>) {
             <div className={'col-12 col-sm-10'}>
                 <div className={'row'}>
                     <div className="col-12">
-                        <strong>{game.title}</strong>
+                        <span className='text-break'><strong>{game.title}</strong></span>
                     </div>
                     <div className={"col-12 text-break"}>
-                        <span className={descriptionClassName}>{descriptionText}</span>
+                        <span className={descriptionClassName}><TruncatedText Text={descriptionText} MaxLength={100}/></span>
                     </div>
                 </div>
             </div>
             <div className={'col-12 col-sm-2 d-flex pe-0 ps-0 ps-sm-1'}>
-                <button className={'btn btn-dark d-flex flex-fill align-items-center ' + buttonDisabled}><FontAwesomeIcon className={'d-flex flex-fill'} icon={icon} /></button>
+                <Link to={game.id} className={'btn btn-dark d-flex flex-fill align-items-center ' + buttonDisabled}><FontAwesomeIcon className={'d-flex flex-fill'} icon={icon} /></Link>
             </div>
         </div>
     );
