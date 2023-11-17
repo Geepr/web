@@ -25,7 +25,7 @@ export function GameListTile(data : Readonly<GameListTileData>) {
             <div className={'col-12 col-sm-10'}>
                 <div className={'row'}>
                     <div className="col-12">
-                        <strong>{game.title}</strong>
+                        <span className='text-break'><strong>{game.title}</strong></span>
                     </div>
                     <div className={"col-12 text-break"}>
                         <span className={descriptionClassName}>{descriptionText}</span>

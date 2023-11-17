@@ -4,14 +4,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import {NavBar} from './NavBar';
 import {GameListDisplayer} from "./components/game/gameListDisplayer";
-import GameDetailsPathLoader from "./components/game/gameDetails";
+import GameDetailsSideCar from "./components/game/gameDetails";
 
 function App() {
     return (
         <Routes>
             <Route path='/' element={<Layout/>}>
                 <Route path='/games' element={<GameListDisplayer/>}>
-                    <Route path=':gameId' element={<GameDetailsPathLoader/>}/>
+                    <Route path=':gameId' element={<GameDetailsSideCar/>}/>
                 </Route>
             </Route>
         </Routes>
