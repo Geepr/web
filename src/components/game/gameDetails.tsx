@@ -1,6 +1,5 @@
 import React from "react";
 import {useGameFetch} from "../../clients/gameClient";
-import {GameListTile} from "./gameListTile";
 import {Link, useParams} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRectangleXmark} from "@fortawesome/free-solid-svg-icons/faRectangleXmark";
