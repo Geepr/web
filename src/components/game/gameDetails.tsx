@@ -16,13 +16,13 @@ export default function GameDetailsSideCar() {
         return <div className='col-8'>Failed to load game</div>
 
     return (
-        <div id='game-sidecar' className='col-8 my-1'>
+        <div id='game-sidecar' className='col-8 my-1 me-1'>
             <div className='row border border-black'>
                 <div className='col-1 d-flex ps-0'>
                     <Link className='btn btn-primary flex-fill d-flex align-items-center' to='/games'><FontAwesomeIcon className='d-flex flex-fill' icon={faRectangleXmark}/></Link>
                 </div>
                 <div className='col-11'>
-                    <div className='row'>
+                    <div className='row ms-1'>
                         <div className='col-11'>
                             <span className='text-break'><strong>{game.title}</strong></span>
                         </div>
