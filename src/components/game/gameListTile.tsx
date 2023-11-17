@@ -7,6 +7,7 @@ import {faBoxArchive} from "@fortawesome/free-solid-svg-icons/faBoxArchive";
 
 import './gameListTile.css';
 import {Link} from "react-router-dom";
+import TruncatedText from "../utils/truncatedText";
 
 class GameListTileData {
     public game : Game = null!;
@@ -28,7 +29,7 @@ export function GameListTile(data : Readonly<GameListTileData>) {
                         <span className='text-break'><strong>{game.title}</strong></span>
                     </div>
                     <div className={"col-12 text-break"}>
-                        <span className={descriptionClassName}>{descriptionText}</span>
+                        <span className={descriptionClassName}><TruncatedText Text={descriptionText} MaxLength={100}/></span>
                     </div>
                 </div>
             </div>
