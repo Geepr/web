@@ -13,11 +13,19 @@ class GameEditFormData {
 
 export default function GameEditForm(gameData : Readonly<GameEditFormData>) {
     const [formData, setFormData] = useState(new GameEditDto(gameData.game));
+    const [submitSuccess, setSubmitSuccess] = useState<boolean | undefined>();
+    const [submitInProgress, setSubmitInProgress] = useState(false);
 
     async function handleSubmit(e : React.FormEvent) {
-        //todo: add feedback
         e.preventDefault();
-        await submitGameEdit(gameData.game.id, formData);
+        setSubmitSuccess(undefined);
+        setSubmitInProgress(true);
+        try {
+            setSubmitSuccess(await submitGameEdit(gameData.game.id, formData));
+        }
+        finally {
+            setSubmitInProgress(false);
+        }
     }
     function handleInputChange (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) {
         const { name, value } = e.target;
@@ -28,6 +36,8 @@ export default function GameEditForm(gameData : Readonly<GameEditFormData>) {
     }
 
     return <div className='row'>
+        {submitSuccess === false && <div className='col-12 mb-3 border border-danger'>Saving game failed, please try again...</div>}
+        {submitSuccess === true && <div className='col-12 mb-3 border border-success'>Changes saved!</div> }
         <div className='col-12'>
             <form onSubmit={handleSubmit}>
                 <div className='row mb-2'>
@@ -54,7 +64,7 @@ export default function GameEditForm(gameData : Readonly<GameEditFormData>) {
                 </div>
                 <div className='row'>
                     <div className='d-flex col-12 col-sm-2 offset-sm-10'>
-                        <input className='btn btn-primary flex-fill' type='submit' value='Save'/>
+                        <input className='btn btn-primary flex-fill' type='submit' disabled={submitInProgress} value='Save'/>
                     </div>
                 </div>
             </form>

@@ -70,5 +70,5 @@ export async function submitGameEdit(id : string, data : GameEditDto) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     });
-    //todo: do a thing with the result
+    return response.ok;
 }
