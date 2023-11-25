@@ -7,7 +7,6 @@ import {
 } from "../components/pagination/paginationHelpers";
 import GameFilter from "../models/gameFilter";
 import GameEditDto from "../models/gameEditDto";
-import {Await} from "react-router-dom";
 
 export function useGameFetch(id : string) {
     const [game, setGame] = useState<Game | null>(null);
