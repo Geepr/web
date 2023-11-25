@@ -6,6 +6,7 @@ import {
     readPaginationDataFromJson
 } from "../components/pagination/paginationHelpers";
 import GameFilter from "../models/gameFilter";
+import GameEditDto from "../models/gameEditDto";
 
 export function useGameFetch(id : string) {
     const [game, setGame] = useState<Game | null>(null);
@@ -60,4 +61,13 @@ export function useGamesFetch(page : number, filter : GameFilter) {
     }, [page, filter]);
 
     return {games, loading, paginationData};
+}
+
+export async function submitGameEdit(id : string, data : GameEditDto) {
+    const response = await fetch(`http://localhost:5510/api/v0/games/${id}`, {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    });
+    return response.ok;
 }
