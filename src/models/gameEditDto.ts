@@ -2,7 +2,7 @@ import {Game} from "./game";
 
 export default class GameEditDto {
     public title : string;
-    public description : string | null;
+    public description : string | undefined;
     public archived : boolean;
 
     public constructor(game : Game) {

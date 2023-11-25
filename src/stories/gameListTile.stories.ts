@@ -30,5 +30,5 @@ export const GameListTileNoDescription : Story = {
 };
 
 export const GameListTileArchived : Story = {
-    args: { game: new Game('368488b8-d7a2-495d-bb9a-7324c4b2bef0', 'Test game', null,  true) }
+    args: { game: new Game('368488b8-d7a2-495d-bb9a-7324c4b2bef0', 'Test game', undefined,  true) }
 };
