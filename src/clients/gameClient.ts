@@ -71,3 +71,10 @@ export async function submitGameEdit(id : string, data : GameEditDto) {
     });
     return response.ok;
 }
+
+export async function deleteGame(id : string) {
+    const response = await fetch(`http://localhost:5510/api/v0/games/${id}`, {
+        method: 'delete',
+    });
+    return response.ok;
+}
