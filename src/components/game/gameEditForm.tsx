@@ -45,7 +45,7 @@ export default function GameEditForm(gameData : Readonly<GameEditFormData>) {
                         <label htmlFor='title'>Title</label>
                     </div>
                     <div className='col-12 col-sm-10'>
-                        <input type='text' className='form-control' id='title' name='title' value={formData?.title} onChange={handleInputChange}/>
+                        <input type='text' maxLength={200} required={true} className='form-control' id='title' name='title' value={formData?.title} onChange={handleInputChange}/>
                     </div>
                 </div>
                 <div className='row mb-2'>
@@ -53,7 +53,7 @@ export default function GameEditForm(gameData : Readonly<GameEditFormData>) {
                         <label htmlFor='description'>Description</label>
                     </div>
                     <div className='col-12 col-sm-10'>
-                        <textarea className='form-control' rows={5} id='description' name='description' value={formData?.description} onChange={handleInputChange}/>
+                        <textarea className='form-control' maxLength={2000} rows={5} id='description' name='description' value={formData?.description} onChange={handleInputChange}/>
                     </div>
                 </div>
                 <div className='row mb-2 form-check'>

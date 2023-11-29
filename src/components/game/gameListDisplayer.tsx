@@ -2,8 +2,10 @@ import {useGamesFetch} from "../../clients/gameClient";
 import {GameList} from "./gameList";
 import {useState} from "react";
 import {PageControl} from "../pagination/pageControl";
-import {Outlet} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import GameFilter from "../../models/gameFilter";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSquarePlus} from "@fortawesome/free-solid-svg-icons/faSquarePlus";
 
 export function GameListDisplayer() {
     const [page, setPage] = useState(1)
@@ -15,6 +17,11 @@ export function GameListDisplayer() {
         return <div>Loading...</div>
     }
     return <>
+        <div className='row mb-4'>
+            <div className='col-12 offset-sm-10 col-sm-2 d-flex'>
+                <Link to='/games/create' title='Create new game' className='btn btn-primary flex-fill'><FontAwesomeIcon icon={faSquarePlus}/></Link>
+            </div>
+        </div>
         <div className='row mb-4'>
             <div className='col-12'>
                 <div className='row'>

@@ -7,6 +7,7 @@ import {
 } from "../components/pagination/paginationHelpers";
 import GameFilter from "../models/gameFilter";
 import GameEditDto from "../models/gameEditDto";
+import GameCreateDto from "../models/gameCreateDto";
 
 export function useGameFetch(id : string) {
     const [game, setGame] = useState<Game | null>(null);
@@ -77,4 +78,18 @@ export async function deleteGame(id : string) {
         method: 'delete',
     });
     return response.ok;
+}
+
+export async function createGame(data : GameCreateDto) {
+    const response = await fetch(`http://localhost:5510/api/v0/games`, {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    });
+    if (response.ok) {
+        const json = await response.json();
+        return {success: true, id: json.id};
+    }
+    else
+        return {success: false};
 }
