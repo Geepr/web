@@ -7,7 +7,6 @@ import {
 } from "../components/pagination/paginationHelpers";
 import GameFilter from "../models/gameFilter";
 import GameEditDto from "../models/gameEditDto";
-import {string} from "prop-types";
 import GameCreateDto from "../models/gameCreateDto";
 
 export function useGameFetch(id : string) {
