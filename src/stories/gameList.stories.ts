@@ -4,10 +4,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import {GameList} from "../components/game/gameList";
 import {Game} from "../models/game";
+import {withRouter} from "storybook-addon-react-router-v6";
 
 const meta = {
     title: 'GameList/List',
     component: GameList,
+    decorators: [withRouter],
     parameters: {
         layout: 'centered',
     },
