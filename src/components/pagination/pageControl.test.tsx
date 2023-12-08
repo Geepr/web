@@ -67,37 +67,37 @@ test('page control many pages set to middle', () => {
 })
 
 test('page control page change next', () => {
-    let lastPageSetTo = -1;
-    render(<PageControl Page={10} TotalPages={20} SetPage={(page : number) => {lastPageSetTo = page;}} />);
+    const pageSetMock = jest.fn();
+    render(<PageControl Page={10} TotalPages={20} SetPage={pageSetMock} />);
 
     fireEvent.click(screen.getByText('Next'));
 
-    expect(lastPageSetTo).toBe(11);
+    expect(pageSetMock).toBeCalledWith(11);
 })
 
 test('page control page change previous', () => {
-    let lastPageSetTo = -1;
-    render(<PageControl Page={10} TotalPages={20} SetPage={(page : number) => {lastPageSetTo = page;}} />);
+    const pageSetMock = jest.fn();
+    render(<PageControl Page={10} TotalPages={20} SetPage={pageSetMock} />);
 
     fireEvent.click(screen.getByText('Previous'));
 
-    expect(lastPageSetTo).toBe(9);
+    expect(pageSetMock).toBeCalledWith(9);
 })
 
 test('page control page change first', () => {
-    let lastPageSetTo = -1;
-    render(<PageControl Page={10} TotalPages={20} SetPage={(page : number) => {lastPageSetTo = page;}} />);
+    const pageSetMock = jest.fn();
+    render(<PageControl Page={10} TotalPages={20} SetPage={pageSetMock} />);
 
     fireEvent.click(screen.getByText('1'));
 
-    expect(lastPageSetTo).toBe(1);
+    expect(pageSetMock).toBeCalledWith(1);
 })
 
 test('page control page change last', () => {
-    let lastPageSetTo = -1;
-    render(<PageControl Page={10} TotalPages={20} SetPage={(page : number) => {lastPageSetTo = page;}} />);
+    const pageSetMock = jest.fn();
+    render(<PageControl Page={10} TotalPages={20} SetPage={pageSetMock} />);
 
     fireEvent.click(screen.getByText('20'));
 
-    expect(lastPageSetTo).toBe(20);
+    expect(pageSetMock).toBeCalledWith(20);
 })
