@@ -2,7 +2,6 @@ import {Game} from "../../models/game";
 import {act, fireEvent, render, screen} from "@testing-library/react";
 import {BrowserRouter} from "react-router-dom";
 import {GameListDisplayer} from "./gameListDisplayer";
-import * as async_hooks from "async_hooks";
 
 afterEach(jest.restoreAllMocks);
 
