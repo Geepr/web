@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import {withRouter} from 'storybook-addon-react-router-v6';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
@@ -8,6 +9,7 @@ import {Game} from "../models/game";
 const meta = {
     title: 'GameList/Tile',
     component: GameListTile,
+    decorators: [withRouter],
     parameters: {
         layout: 'centered',
     },

@@ -13,7 +13,7 @@ export default function GameDetailsSideCar() {
     if (loading)
         return <div className='col-8'>Loading...</div>
 
-    if (game == null || gameId == null)
+    if (game === undefined)
         return <div className='col-8'>Failed to load game</div>
 
     return (

@@ -10,7 +10,7 @@ import GameEditDto from "../models/gameEditDto";
 import GameCreateDto from "../models/gameCreateDto";
 
 export function useGameFetch(id : string) {
-    const [game, setGame] = useState<Game | null>(null);
+    const [game, setGame] = useState<Game | undefined>();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
