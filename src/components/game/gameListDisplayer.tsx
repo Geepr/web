@@ -29,7 +29,7 @@ export function GameListDisplayer() {
                         <label form='title-filter'>Title</label>
                     </div>
                     <div className='col-12 col-sm-10'>
-                        <input id='title-filter' className='form-control' type='text' value={filter.title} onChange={event => setFilter(prevState => ({...prevState, title: event.target.value}))}></input>
+                        <input id='title-filter' placeholder='Game title...' className='form-control' type='text' value={filter.title} onChange={event => setFilter(prevState => ({...prevState, title: event.target.value}))}></input>
                     </div>
                 </div>
             </div>
