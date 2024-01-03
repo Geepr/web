@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import {PaginationData, readPaginationDataFromJson} from "../components/pagination/paginationHelpers";
 import Platform from "../models/platform";
 import PlatformFilter from "../models/platformFilter";
+import GameCreateDto from "../models/gameCreateDto";
+import PlatformCreateDto from "../models/platformCreateDto";
 
 export function usePlatformsFetch(page : number, filter : PlatformFilter) {
     const [platforms, setPlatforms] = useState<Platform[]>([]);
@@ -29,4 +31,18 @@ export function usePlatformsFetch(page : number, filter : PlatformFilter) {
     }, [page, filter]);
 
     return {platforms, loading, paginationData};
+}
+
+export async function createPlatform(data : PlatformCreateDto) {
+    const response = await fetch(`http://localhost:5510/api/v0/platforms`, {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    });
+    if (response.ok) {
+        const json = await response.json();
+        return {success: true, id: json.id};
+    }
+    else
+        return {success: false};
 }

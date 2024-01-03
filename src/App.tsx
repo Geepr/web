@@ -9,6 +9,7 @@ import GameEditDisplayer from "./components/game/gameEditDisplayer";
 import GameDeleteDisplayer from "./components/game/gameDeleteDisplayer";
 import GameCreator from "./components/game/gameCreator";
 import PlatformListDisplayer from "./components/platform/platformListDisplayer";
+import PlatformCreator from "./components/platform/platformCreator";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path='/games/create' element={<GameCreator/>} />
 
                 <Route path={'/platforms'} element={<PlatformListDisplayer/>} />
+                <Route path={'/platforms/create'} element={<PlatformCreator/>} />
 
             </Route>
         </Routes>
