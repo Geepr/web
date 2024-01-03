@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import {PaginationData, readPaginationDataFromJson} from "../components/pagination/paginationHelpers";
 import Platform from "../models/platform";
+import PlatformFilter from "../models/platformFilter";
 
-export function usePlatformsFetch(page : number) {
+export function usePlatformsFetch(page : number, filter : PlatformFilter) {
     const [platforms, setPlatforms] = useState<Platform[]>([]);
     const [loading, setLoading] = useState(true);
     const [paginationData, setPaginationData] = useState<PaginationData>();
@@ -11,7 +12,7 @@ export function usePlatformsFetch(page : number) {
         async function load() {
             try {
                 //todo: page size shouldn't be required here, really
-                const response = await fetch(`http://localhost:5510/api/v0/platforms?page=${page}&pageSize=20`);
+                const response = await fetch(`http://localhost:5510/api/v0/platforms?page=${page}&pageSize=20&name=${filter.name}`);
                 if (response.ok) {
                     const json = await response.json();
                     setPaginationData(readPaginationDataFromJson(json));
@@ -25,7 +26,7 @@ export function usePlatformsFetch(page : number) {
             }
         }
         load();
-    }, [page]);
+    }, [page, filter]);
 
     return {platforms, loading, paginationData};
 }

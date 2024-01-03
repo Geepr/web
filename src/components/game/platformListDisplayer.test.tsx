@@ -2,6 +2,8 @@ import Platform from "../../models/platform";
 import {act, fireEvent, render, screen} from "@testing-library/react";
 import {BrowserRouter} from "react-router-dom";
 import PlatformListDisplayer from "./platformListDisplayer";
+import {Game} from "../../models/game";
+import {GameListDisplayer} from "./gameListDisplayer";
 
 afterEach(jest.restoreAllMocks);
 
@@ -98,4 +100,28 @@ test('Platform list displayer two pages', async () => {
     expect(screen.queryByText('tt3')).not.toBeInTheDocument();
     // eslint-disable-next-line testing-library/no-node-access
     expect(screen.getByText('1').parentElement).toHaveClass('active');
+})
+
+test('Platform list displayer filter applied', async () => {
+    const mockFetch = jest.fn().mockImplementation(() => {
+        return {
+            ok: true,
+            json: async () => ({
+                platforms: [new Platform('test-id', 'test title', 'tt')],
+                page: 1,
+                totalPages: 1,
+                pageSize: 20
+            })
+        };
+    })
+    jest.spyOn(global, 'fetch').mockImplementation(mockFetch);
+
+    // eslint-disable-next-line testing-library/no-unnecessary-act
+    await act(async () => render(<BrowserRouter><PlatformListDisplayer/></BrowserRouter>));
+    // eslint-disable-next-line testing-library/no-unnecessary-act
+    await act(async () => fireEvent.change(screen.getByPlaceholderText('Platform name...'), {target: {value: "name"}}));
+
+    expect(mockFetch).toBeCalledWith("http://localhost:5510/api/v0/platforms?page=1&pageSize=20&name=");
+    expect(mockFetch).toBeCalledWith("http://localhost:5510/api/v0/platforms?page=1&pageSize=20&name=name");
+    expect(mockFetch).toBeCalledTimes(2);
 })
