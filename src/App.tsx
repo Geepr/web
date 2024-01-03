@@ -10,6 +10,8 @@ import GameDeleteDisplayer from "./components/game/gameDeleteDisplayer";
 import GameCreator from "./components/game/gameCreator";
 import PlatformListDisplayer from "./components/platform/platformListDisplayer";
 import PlatformCreator from "./components/platform/platformCreator";
+import PlatformEditForm from "./components/platform/platformEditForm";
+import PlatformEditDisplayer from "./components/platform/platformEditDisplayer";
 
 function App() {
     return (
@@ -24,6 +26,7 @@ function App() {
 
                 <Route path={'/platforms'} element={<PlatformListDisplayer/>} />
                 <Route path={'/platforms/create'} element={<PlatformCreator/>} />
+                <Route path={'/platforms/edit/:platformId'} element={<PlatformEditDisplayer/>} />
 
             </Route>
         </Routes>
