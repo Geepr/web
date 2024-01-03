@@ -24,7 +24,7 @@ export default function PlatformListDisplayer() {
             <div className='col-12'>
                 <div className='row'>
                     <div className='col-12 col-sm-2 my-auto'>
-                        <label form='name-filter'>Name</label>
+                        <label htmlFor='name-filter'>Name</label>
                     </div>
                     <div className='col-12 col-sm-10'>
                         <input id='name-filter' placeholder='Platform name...' className='form-control' type='text' value={filter.name} onChange={event => setFilter(prevState => ({...prevState, name: event.target.value}))}></input>
