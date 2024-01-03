@@ -3,7 +3,7 @@ import {act, fireEvent, render, screen} from "@testing-library/react";
 import {BrowserRouter} from "react-router-dom";
 import PlatformListDisplayer from "./platformListDisplayer";
 import {Game} from "../../models/game";
-import {GameListDisplayer} from "./gameListDisplayer";
+import {GameListDisplayer} from "../game/gameListDisplayer";
 
 afterEach(jest.restoreAllMocks);
 

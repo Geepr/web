@@ -8,7 +8,7 @@ import GameDetailsSideCar from "./components/game/gameDetails";
 import GameEditDisplayer from "./components/game/gameEditDisplayer";
 import GameDeleteDisplayer from "./components/game/gameDeleteDisplayer";
 import GameCreator from "./components/game/gameCreator";
-import PlatformListDisplayer from "./components/game/platformListDisplayer";
+import PlatformListDisplayer from "./components/platform/platformListDisplayer";
 
 function App() {
     return (

@@ -1,5 +1,5 @@
 import Platform from "../../models/platform";
-import PlatformListTile from "../platform/platformListTile";
+import PlatformListTile from "./platformListTile";
 
 class platformListData {
     public platforms : Platform[]

@@ -5,7 +5,7 @@ import '../App.css';
 import {GameList} from "../components/game/gameList";
 import {Game} from "../models/game";
 import {withRouter} from "storybook-addon-react-router-v6";
-import PlatformList from "../components/game/platformList";
+import PlatformList from "../components/platform/platformList";
 import Platform from "../models/platform";
 
 const meta = {
