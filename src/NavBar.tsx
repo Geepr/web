@@ -15,6 +15,9 @@ export function NavBar() {
                         <li className="nav-item">
                             <Link to='/games' className="nav-link text-white">Games</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to='/platforms' className="nav-link text-white">Platforms</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
