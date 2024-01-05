@@ -81,5 +81,5 @@ export async function createPlatform(data : PlatformCreateDto) {
         return {success: true, id: json.id};
     }
     else
-        return {success: false};
+        return {success: false, id : undefined};
 }
