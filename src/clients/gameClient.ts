@@ -91,5 +91,5 @@ export async function createGame(data : GameCreateDto) {
         return {success: true, id: json.id};
     }
     else
-        return {success: false};
+        return {success: false, id : undefined};
 }
