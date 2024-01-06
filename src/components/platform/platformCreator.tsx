@@ -7,8 +7,8 @@ import FormGroup from "../forms/formGroup";
 import FormLabel from "../forms/formLabel";
 import FormTextInput from "../forms/formTextInput";
 
-function platformCreatorFormControls(data : Readonly<CreatorChildData<PlatformCreateDto>>) {
-    const {formData, handleInputChange} = data;
+function platformCreatorFormControls(props : Readonly<CreatorChildData<PlatformCreateDto>>) {
+    const {formData, handleInputChange} = props;
 
     return <>
         <FormGroup>

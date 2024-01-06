@@ -11,8 +11,8 @@ class PlatformEditFormData {
     }
 }
 
-export default function PlatformEditForm(platformData : Readonly<PlatformEditFormData>) {
-    const [formData, setFormData] = useState(new PlatformEditDto(platformData.platform));
+export default function PlatformEditForm(props : Readonly<PlatformEditFormData>) {
+    const [formData, setFormData] = useState(new PlatformEditDto(props.platform));
     const [submitSuccess, setSubmitSuccess] = useState<boolean | undefined>();
     const [submitInProgress, setSubmitInProgress] = useState(false);
 
@@ -21,7 +21,7 @@ export default function PlatformEditForm(platformData : Readonly<PlatformEditFor
         setSubmitSuccess(undefined);
         setSubmitInProgress(true);
         try {
-            setSubmitSuccess(await submitPlatformEdit(platformData.platform.id, formData));
+            setSubmitSuccess(await submitPlatformEdit(props.platform.id, formData));
         }
         finally {
             setSubmitInProgress(false);

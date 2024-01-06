@@ -15,20 +15,20 @@ class creatorData<FormData> {
     public renderFormBody : (data : Readonly<CreatorChildData<FormData>>) => ReactElement = undefined!;
 }
 
-export default function Creator<FormData>(data : Readonly<creatorData<FormData>>) {
+export default function Creator<FormData>(props : Readonly<creatorData<FormData>>) {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState(data.initialData);
+    const [formData, setFormData] = useState(props.initialData);
     const [submitInProgress, setSubmitInProgress] = useState(false);
 
     async function handleSubmit(e : React.FormEvent) {
         e.preventDefault();
         setSubmitInProgress(true)
         try {
-            const result = await data.submit(formData);
+            const result = await props.submit(formData);
             if (!result.success)
                 alert('Something went wrong, please try again.');
             else
-                data.onSuccess(result.id);
+                props.onSuccess(result.id);
         }
         catch {
             alert('Something went wrong, please try again.');
@@ -50,7 +50,7 @@ export default function Creator<FormData>(data : Readonly<creatorData<FormData>>
         </div>
         <form onSubmit={handleSubmit}>
             <div className={'row'}>
-                {data.renderFormBody({formData, handleInputChange})}
+                {props.renderFormBody({formData, handleInputChange})}
                 <div className='row'>
                     <div className='d-flex col-12 col-sm-2 offset-sm-10'>
                         <input className='btn btn-primary flex-fill' type='submit' disabled={submitInProgress} value='Save'/>

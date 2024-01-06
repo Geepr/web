@@ -13,8 +13,8 @@ class platformListTileData {
     }
 }
 
-export default function PlatformListTile(params : Readonly<platformListTileData>) {
-    const {platform} = params;
+export default function PlatformListTile(props : Readonly<platformListTileData>) {
+    const {platform} = props;
 
     return <div className='row tile-row'>
         <div className='col-4 col-sm-2 short-name-box d-flex flex-fill text-break'>

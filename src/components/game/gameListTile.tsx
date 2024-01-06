@@ -13,8 +13,8 @@ class GameListTileData {
     public game : Game = null!;
 }
 
-export function GameListTile(data : Readonly<GameListTileData>) {
-    const game = data.game;
+export function GameListTile(props : Readonly<GameListTileData>) {
+    const game = props.game;
     const gameDescription = game.description ?? 'This game has no description...';
     const descriptionText = game.archived ? 'This game has been archived' : gameDescription;
     const descriptionClassName = (!game.archived && !game.description) ? 'description-disabled' : '';

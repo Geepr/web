@@ -10,8 +10,8 @@ class formLabelData {
     }
 }
 
-export default function FormLabel(data : Readonly<formLabelData>) {
+export default function FormLabel(props : Readonly<formLabelData>) {
     return <div className='col-12 col-sm-2 my-auto'>
-        <label htmlFor={data.forId}>{data.children}</label>
+        <label htmlFor={props.forId}>{props.children}</label>
     </div>
 }

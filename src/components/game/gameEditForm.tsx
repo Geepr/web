@@ -11,8 +11,8 @@ class GameEditFormData {
     }
 }
 
-export default function GameEditForm(gameData : Readonly<GameEditFormData>) {
-    const [formData, setFormData] = useState(new GameEditDto(gameData.game));
+export default function GameEditForm(props : Readonly<GameEditFormData>) {
+    const [formData, setFormData] = useState(new GameEditDto(props.game));
     const [submitSuccess, setSubmitSuccess] = useState<boolean | undefined>();
     const [submitInProgress, setSubmitInProgress] = useState(false);
 
@@ -21,7 +21,7 @@ export default function GameEditForm(gameData : Readonly<GameEditFormData>) {
         setSubmitSuccess(undefined);
         setSubmitInProgress(true);
         try {
-            setSubmitSuccess(await submitGameEdit(gameData.game.id, formData));
+            setSubmitSuccess(await submitGameEdit(props.game.id, formData));
         }
         finally {
             setSubmitInProgress(false);

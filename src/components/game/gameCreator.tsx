@@ -8,8 +8,8 @@ import FormLabel from "../forms/formLabel";
 import FormTextInput from "../forms/formTextInput";
 import FormTextAreaInput from "../forms/formTextAreaInput";
 
-function gameCreatorFormControls(data : Readonly<CreatorChildData<GameCreateDto>>) {
-    const {formData, handleInputChange} = data;
+function gameCreatorFormControls(props : Readonly<CreatorChildData<GameCreateDto>>) {
+    const {formData, handleInputChange} = props;
 
     return <>
         <FormGroup>

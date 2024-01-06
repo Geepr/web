@@ -4,8 +4,8 @@ class formGroupData {
     public children : ReactNode;
 }
 
-export default function FormGroup(data : Readonly<formGroupData>) {
+export default function FormGroup(props : Readonly<formGroupData>) {
     return <div className={'row mb-2'}>
-        {data.children}
+        {props.children}
     </div>
 }
