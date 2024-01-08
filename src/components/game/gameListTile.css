@@ -3,7 +3,7 @@ span.description-disabled {
     opacity: 50%;
 }
 
-div.game-disabled {
+div.game-disabled > div > a {
     opacity: 50%;
-    cursor: not-allowed;
+    pointer-events: none;
 }

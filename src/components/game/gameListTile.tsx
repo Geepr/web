@@ -1,13 +1,12 @@
 import React from "react";
 import {Game} from "../../models/game";
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleRight} from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import {faBoxArchive} from "@fortawesome/free-solid-svg-icons/faBoxArchive";
 
 import './gameListTile.css';
-import {Link} from "react-router-dom";
 import TruncatedText from "../utils/truncatedText";
+import IconLink from "../utils/IconLink";
 
 class GameListTileData {
     public game : Game = null!;
@@ -33,8 +32,8 @@ export function GameListTile(props : Readonly<GameListTileData>) {
                     </div>
                 </div>
             </div>
-            <div className={'col-12 col-sm-2 d-flex pe-0 ps-0 ps-sm-1'}>
-                <Link to={game.id} role='link' className={'btn btn-dark d-flex flex-fill align-items-center ' + buttonDisabled}><FontAwesomeIcon className={'d-flex flex-fill'} icon={icon} /></Link>
+            <div className={'col-12 col-sm-2 d-flex pe-0 ps-0 ps-sm-1 ' + buttonDisabled}>
+                <IconLink to={game.id} icon={icon}/>
             </div>
         </div>
     );
