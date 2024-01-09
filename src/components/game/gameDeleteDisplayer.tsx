@@ -4,7 +4,7 @@ import {deleteGame, useGameFetch} from "../../clients/gameClient";
 
 export default function GameDeleteDisplayer() {
     const {gameId} = useParams();
-    const {game, loading} = useGameFetch(gameId!);
+    const {result: game, loading} = useGameFetch(gameId!);
     const navigate = useNavigate();
 
     if (loading)

@@ -12,8 +12,8 @@ class formTextInputData {
     public onChange : ((e : React.ChangeEvent<HTMLInputElement>) => void) = (_) => {};
 }
 
-export default function FormTextInput(props : Readonly<formTextInputData>) {
+export default function FormTextInput({ id, name, value, maxLength = 1000, minLength = 0, required = false, placeholder = "", title = "", onChange } : Readonly<formTextInputData>) {
     return <div className='col-12 col-sm-10'>
-        <input type='text' className='form-control' maxLength={props.maxLength} minLength={props.minLength} required={props.required} placeholder={props.placeholder} id={props.id} name={props.name} value={props.value} onChange={props.onChange} title={props.title}/>
+        <input type='text' className='form-control' maxLength={maxLength} minLength={minLength} required={required} placeholder={placeholder} id={id} name={name} value={value} onChange={onChange} title={title}/>
     </div>
 }

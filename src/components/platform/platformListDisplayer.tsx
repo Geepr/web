@@ -10,7 +10,7 @@ import {faSquarePlus} from "@fortawesome/free-solid-svg-icons/faSquarePlus";
 export default function PlatformListDisplayer() {
     const [page, setPage] = useState(1)
     const [filter, setFilter] = useState(new PlatformFilter());
-    const {platforms, loading, paginationData} = usePlatformsFetch(page, filter);
+    const {results: platforms, loading, paginationData} = usePlatformsFetch(page, filter);
 
     if (loading)
         return <div>Loading...</div>
@@ -27,7 +27,7 @@ export default function PlatformListDisplayer() {
                         <label htmlFor='name-filter'>Name</label>
                     </div>
                     <div className='col-12 col-sm-10'>
-                        <input id='name-filter' placeholder='Platform name...' className='form-control' type='text' value={filter.name} onChange={event => setFilter(prevState => ({...prevState, name: event.target.value}))}></input>
+                        <input id='name-filter' placeholder='Platform name...' className='form-control' type='text' value={filter.name} onChange={event => setFilter(prevState => {let newState = prevState.clone(); newState.name = event.target.value; return newState;})}></input>
                     </div>
                 </div>
             </div>

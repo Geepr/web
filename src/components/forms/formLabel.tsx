@@ -1,13 +1,8 @@
 import React, {ReactNode} from "react";
 
 class formLabelData {
-    public forId : string;
+    public forId : string = undefined!;
     public children : ReactNode;
-
-    constructor(forId : string, children : ReactNode) {
-        this.forId = forId;
-        this.children = children;
-    }
 }
 
 export default function FormLabel(props : Readonly<formLabelData>) {

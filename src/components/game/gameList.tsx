@@ -3,7 +3,7 @@ import {Game} from "../../models/game";
 import {GameListTile} from "./gameListTile";
 
 class GameListData {
-    public games : Game[] = null!;
+    public games : Game[] = undefined!;
 }
 
 export function GameList(props : Readonly<GameListData>) {

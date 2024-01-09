@@ -5,7 +5,7 @@ import PlatformEditDto from "../models/platformEditDto";
 import {createObject, submitObjectEdit, useObjectFetch, useObjectsFetch} from "./commonClient";
 
 export function usePlatformsFetch(page : number, filter : PlatformFilter) {
-    return useObjectsFetch('v0/platforms', page, filter, json => json.platforms);
+    return useObjectsFetch<Platform>('v0/platforms', page, filter, json => json.platforms);
 }
 
 export function usePlatformFetch(id : string) {

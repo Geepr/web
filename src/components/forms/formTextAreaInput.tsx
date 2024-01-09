@@ -1,20 +1,20 @@
 import React from "react";
 
 class formTextAreaInputData {
-    public id : string = "";
-    public name : string = "";
+    public id : string = undefined!;
+    public name : string = undefined!;
     public value : string | undefined;
-    public rows : number = 5;
-    public maxLength? : number = 1000;
-    public minLength? : number = 0;
-    public required? : boolean = false;
-    public placeholder? : string = "";
-    public title? : string = "";
-    public onChange : ((e : React.ChangeEvent<HTMLTextAreaElement>) => void) = (_) => {};
+    public rows : number = undefined!;
+    public maxLength? : number;
+    public minLength? : number;
+    public required? : boolean;
+    public placeholder? : string;
+    public title? : string;
+    public onChange : ((e : React.ChangeEvent<HTMLTextAreaElement>) => void) = undefined!;
 }
 
-export default function FormTextAreaInput(props : Readonly<formTextAreaInputData>) {
+export default function FormTextAreaInput({ id, name, value, rows = 5, maxLength = 1000, minLength = 0, required = false, placeholder = "", title = "", onChange } : Readonly<formTextAreaInputData>) {
     return <div className='col-12 col-sm-10'>
-        <textarea className='form-control' rows={props.rows} maxLength={props.maxLength} minLength={props.minLength} required={props.required} placeholder={props.placeholder} id={props.id} name={props.name} value={props.value} onChange={props.onChange} title={props.title}/>
+        <textarea className='form-control' rows={rows} maxLength={maxLength} minLength={minLength} required={required} placeholder={placeholder} id={id} name={name} value={value} onChange={onChange} title={title}/>
     </div>
 }

@@ -10,7 +10,7 @@ import {faSquarePlus} from "@fortawesome/free-solid-svg-icons/faSquarePlus";
 export function GameListDisplayer() {
     const [page, setPage] = useState(1)
     const [filter, setFilter] = useState(new GameFilter());
-    const {games, loading, paginationData} = useGamesFetch(page, filter);
+    const {results: games, loading, paginationData} = useGamesFetch(page, filter);
 
 
     if (loading) {
@@ -29,7 +29,7 @@ export function GameListDisplayer() {
                         <label form='title-filter'>Title</label>
                     </div>
                     <div className='col-12 col-sm-10'>
-                        <input id='title-filter' placeholder='Game title...' className='form-control' type='text' value={filter.title} onChange={event => setFilter(prevState => ({...prevState, title: event.target.value}))}></input>
+                        <input id='title-filter' placeholder='Game title...' className='form-control' type='text' value={filter.title} onChange={event => setFilter(prevState => {let newState = prevState.clone(); newState.title = event.target.value; return newState;})}></input>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ import PlatformEditForm from "./platformEditForm";
 
 export default function PlatformEditDisplayer() {
     const {platformId} = useParams();
-    const {platform, loading} = usePlatformFetch(platformId!);
+    const {result: platform, loading} = usePlatformFetch(platformId!);
     const navigate = useNavigate();
 
     if (loading)

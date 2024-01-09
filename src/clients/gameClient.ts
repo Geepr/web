@@ -9,7 +9,7 @@ export function useGameFetch(id : string) {
 }
 
 export function useGamesFetch(page : number, filter : GameFilter) {
-    return useObjectsFetch('v0/games', page, filter, json => json.games);
+    return useObjectsFetch<Game>('v0/games', page, filter, json => json.games);
 }
 
 export function submitGameEdit(id : string, data : GameEditDto) {

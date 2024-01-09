@@ -7,7 +7,7 @@ import {faAngleLeft} from "@fortawesome/free-solid-svg-icons/faAngleLeft";
 
 export default function GameEditDisplayer() {
     const {gameId} = useParams();
-    const {game, loading} = useGameFetch(gameId!);
+    const {result: game, loading} = useGameFetch(gameId!);
     const navigate = useNavigate();
 
     if (loading)

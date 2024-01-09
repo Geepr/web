@@ -8,7 +8,7 @@ export class TextData {
     }
 }
 
-export default function TruncatedText(props : Readonly<TextData>) {
-    const text = props.Text.length > props.MaxLength ? `${props.Text.substring(0, props.MaxLength)}...` : props.Text;
+export default function TruncatedText({Text, MaxLength = 50} : Readonly<TextData>) {
+    const text = Text.length > MaxLength ? `${Text.substring(0, MaxLength)}...` : Text;
     return (<>{text}</>);
 }
