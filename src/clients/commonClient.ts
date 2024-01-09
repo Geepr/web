@@ -84,3 +84,10 @@ export async function createObject<T>(endpoint : string, data : T) {
     else
         return {success: false, id : undefined};
 }
+
+export async function deleteObject(endpoint : string, id : string) {
+    const response = await fetch(`http://localhost:5510/api/${endpoint}/${id}`, {
+        method: 'delete',
+    });
+    return response.ok;
+}
