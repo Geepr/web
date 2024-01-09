@@ -12,10 +12,10 @@ export function usePlatformFetch(id : string) {
     return useObjectFetch<Platform>('v0/platforms', id, json => json);
 }
 
-export async function submitPlatformEdit(id : string, data : PlatformEditDto) {
+export function submitPlatformEdit(id : string, data : PlatformEditDto) {
     return submitObjectEdit('v0/platforms', id, data);
 }
 
-export async function createPlatform(data : PlatformCreateDto) {
+export function createPlatform(data : PlatformCreateDto) {
     return createObject('v0/platforms', data);
 }
