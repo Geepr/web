@@ -25,5 +25,5 @@ function gameCreatorFormControls(props : Readonly<FormChildData<GameCreateDto>>)
 
 export default function GameCreator() {
     const navigate = useNavigate();
-    return <Form<GameCreateDto> initialData={new GameCreateDto()} submit={createGame} onSuccess={(id : string) => (navigate(`/games/${id}`))} renderFormBody={gameCreatorFormControls}/>
+    return <Form<GameCreateDto> initialData={new GameCreateDto()} submit={createGame} onSuccess={(id : string | undefined) => (navigate(`/games/${id}`))} renderFormBody={gameCreatorFormControls}/>
 }
