@@ -1,6 +1,4 @@
-import {ObjectFilter} from "../clients/commonClient";
-
-export default class GameFilter implements ObjectFilter{
+export default class GameFilter {
      public title : string = "";
 
      constructor(title = "") {

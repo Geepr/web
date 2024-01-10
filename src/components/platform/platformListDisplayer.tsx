@@ -14,6 +14,8 @@ export default function PlatformListDisplayer() {
 
     if (loading)
         return <div>Loading...</div>
+    if (platforms === undefined)
+        return <div>Loading failed...</div>
     return <>
         <div className='row mb-4'>
             <div className='col-12 offset-sm-10 col-sm-2 d-flex'>
@@ -34,7 +36,7 @@ export default function PlatformListDisplayer() {
         </div>
         <div className='row'>
             <div className='col'>
-                <PlatformList platforms={platforms} />
+                <PlatformList platforms={platforms?.platforms ?? []} />
                 <PageControl Page={page} TotalPages={paginationData?.TotalPages ?? 0} SetPage={setPage}/>
             </div>
         </div>

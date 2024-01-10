@@ -2,16 +2,12 @@ import {useEffect, useState} from "react";
 import {PaginationData, readPaginationDataFromJson} from "../components/pagination/paginationHelpers";
 import {validate as isValidUuid} from "uuid";
 
-export interface ObjectFilter {
-    getQueryString() : string;
-}
-
 function getGatewayUrl() {
     return process.env.REACT_APP_GATEWAY_URL ?? 'http://localhost:5510/api';
 }
 
-export function useObjectsFetch<T>(apiEndpoint : string, page : number, filter : ObjectFilter, readObjects : (json : any) => T[]) {
-    const [results, setResults] = useState<T[]>([]);
+export function useObjectsFetch<T>(apiEndpoint : string, page : number, queryString : string) {
+    const [results, setResults] = useState<T | undefined>();
     const [loading, setLoading] = useState(true);
     const [paginationData, setPaginationData] = useState<PaginationData>();
 
@@ -19,11 +15,11 @@ export function useObjectsFetch<T>(apiEndpoint : string, page : number, filter :
         async function load() {
             try {
                 //todo: page size shouldn't be required here, really
-                const response = await fetch(`${getGatewayUrl()}/${page}&pageSize=20&${filter.getQueryString()}`);
+                const response = await fetch(`${getGatewayUrl()}/${apiEndpoint}?page=${page}&pageSize=20&${queryString}`);
                 if (response.ok) {
                     const json = await response.json();
                     setPaginationData(readPaginationDataFromJson(json));
-                    setResults(readObjects(json));
+                    setResults(json);
                 } else {
                     throw response;
                 }
@@ -33,12 +29,12 @@ export function useObjectsFetch<T>(apiEndpoint : string, page : number, filter :
             }
         }
         load();
-    }, [page, filter, apiEndpoint, readObjects]);
+    }, [page, queryString, apiEndpoint]);
 
     return {results, loading, paginationData};
 }
 
-export function useObjectFetch<T>(apiEndpoint : string, uuid : string, readResult : (json : any) => T) {
+export function useObjectFetch<T>(apiEndpoint : string, uuid : string) {
     const [result, setResult] = useState<T | undefined>();
     const [loading, setLoading] = useState(true);
 
@@ -50,7 +46,7 @@ export function useObjectFetch<T>(apiEndpoint : string, uuid : string, readResul
                 const response = await fetch(`${getGatewayUrl()}/${apiEndpoint}/${uuid}`);
                 if (response.ok) {
                     const json = await response.json();
-                    setResult(readResult(json));
+                    setResult(json);
                 } else {
                     throw response;
                 }
@@ -60,7 +56,7 @@ export function useObjectFetch<T>(apiEndpoint : string, uuid : string, readResul
             }
         }
         load();
-    }, [uuid, apiEndpoint, readResult]);
+    }, [uuid, apiEndpoint]);
 
     return {result, loading};
 }

@@ -5,11 +5,11 @@ import GameCreateDto from "../models/gameCreateDto";
 import {createObject, deleteObject, submitObjectEdit, useObjectFetch, useObjectsFetch} from "./commonClient";
 
 export function useGameFetch(id : string) {
-    return useObjectFetch<Game>('v0/games', id, json => json);
+    return useObjectFetch<Game>('v0/games', id);
 }
 
 export function useGamesFetch(page : number, filter : GameFilter) {
-    return useObjectsFetch<Game>('v0/games', page, filter, json => json.games);
+    return useObjectsFetch<{games : Game[]}>('v0/games', page, filter.getQueryString());
 }
 
 export function submitGameEdit(data : GameEditDto) {

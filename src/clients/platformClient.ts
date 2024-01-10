@@ -5,11 +5,11 @@ import PlatformEditDto from "../models/platformEditDto";
 import {createObject, submitObjectEdit, useObjectFetch, useObjectsFetch} from "./commonClient";
 
 export function usePlatformsFetch(page : number, filter : PlatformFilter) {
-    return useObjectsFetch<Platform>('v0/platforms', page, filter, json => json.platforms);
+    return useObjectsFetch<{platforms : Platform[]}>('v0/platforms', page, filter.getQueryString());
 }
 
 export function usePlatformFetch(id : string) {
-    return useObjectFetch<Platform>('v0/platforms', id, json => json);
+    return useObjectFetch<Platform>('v0/platforms', id);
 }
 
 export function submitPlatformEdit(data : PlatformEditDto) {

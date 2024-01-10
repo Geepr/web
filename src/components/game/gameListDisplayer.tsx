@@ -16,6 +16,9 @@ export function GameListDisplayer() {
     if (loading) {
         return <div>Loading...</div>
     }
+    if (games === undefined) {
+        return <div>Loading failed</div>
+    }
     return <>
         <div className='row mb-4'>
             <div className='col-12 offset-sm-10 col-sm-2 d-flex'>
@@ -36,7 +39,7 @@ export function GameListDisplayer() {
         </div>
         <div className='row'>
             <div className='col'>
-                <GameList games={games}/>
+                <GameList games={games?.games ?? []}/>
                 <PageControl Page={page} TotalPages={paginationData?.TotalPages ?? 0} SetPage={setPage}/>
             </div>
             <Outlet/>

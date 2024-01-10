@@ -1,6 +1,4 @@
-import {ObjectFilter} from "../clients/commonClient";
-
-export default class PlatformFilter implements ObjectFilter{
+export default class PlatformFilter{
     public name : string = ""
 
     constructor(name = "") {
