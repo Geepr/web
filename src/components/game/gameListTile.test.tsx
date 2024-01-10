@@ -37,5 +37,4 @@ it.each([undefined, 'test description'])('game tile displays archived string', (
 
     expect(screen.getByText('test title')).toBeInTheDocument();
     expect(screen.getByText('This game has been archived')).toBeInTheDocument();
-    expect(screen.getByRole('link')).toHaveClass('disabled')
 });

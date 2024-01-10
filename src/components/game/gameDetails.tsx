@@ -8,7 +8,7 @@ import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 
 export default function GameDetailsSideCar() {
     const {gameId} = useParams();
-    const {game, loading} = useGameFetch(gameId!);
+    const {result: game, loading} = useGameFetch(gameId!);
 
     if (loading)
         return <div className='col-8'>Loading...</div>

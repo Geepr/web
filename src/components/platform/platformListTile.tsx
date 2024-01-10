@@ -1,9 +1,8 @@
 import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPenToSquare} from "@fortawesome/free-solid-svg-icons/faPenToSquare";
 import Platform from "../../models/platform";
 import './platformListTile.css';
-import {Link} from "react-router-dom";
+import IconLink from "../utils/IconLink";
 
 class platformListTileData {
     platform : Platform
@@ -13,8 +12,8 @@ class platformListTileData {
     }
 }
 
-export default function PlatformListTile(params : Readonly<platformListTileData>) {
-    const {platform} = params;
+export default function PlatformListTile(props : Readonly<platformListTileData>) {
+    const {platform} = props;
 
     return <div className='row tile-row'>
         <div className='col-4 col-sm-2 short-name-box d-flex flex-fill text-break'>
@@ -24,7 +23,7 @@ export default function PlatformListTile(params : Readonly<platformListTileData>
             <span className={'m-auto'}>{platform.name}</span>
         </div>
         <div className={'col-12 col-sm-3 d-flex pe-0 ps-0 ps-sm-1'}>
-            <Link className='btn btn-dark d-flex flex-fill align-items-center' title='Edit' to={`/platforms/edit/${platform.id}`}><FontAwesomeIcon className='d-flex flex-fill' icon={faPenToSquare}/></Link>
+            <IconLink to={`/platforms/edit/${platform.id}`} icon={faPenToSquare} title={'Edit'}/>
         </div>
     </div>
 }

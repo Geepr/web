@@ -3,13 +3,13 @@ import {Game} from "../../models/game";
 import {GameListTile} from "./gameListTile";
 
 class GameListData {
-    public games : Game[] = null!;
+    public games : Game[] = undefined!;
 }
 
-export function GameList(data : Readonly<GameListData>) {
+export function GameList(props : Readonly<GameListData>) {
     return (
         <>
-            {data.games.map(g => <div key={g.id} className={'m-1'}><GameListTile key={g.id} game={g}/></div>)}
+            {props.games.map(g => <div key={g.id} className={'m-1'}><GameListTile key={g.id} game={g}/></div>)}
         </>
     );
 }

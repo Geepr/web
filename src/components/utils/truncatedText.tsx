@@ -8,7 +8,7 @@ export class TextData {
     }
 }
 
-export default function TruncatedText(data : Readonly<TextData>) {
-    const text = data.Text.length > data.MaxLength ? `${data.Text.substring(0, data.MaxLength)}...` : data.Text;
+export default function TruncatedText({Text, MaxLength = 50} : Readonly<TextData>) {
+    const text = Text.length > MaxLength ? `${Text.substring(0, MaxLength)}...` : Text;
     return (<>{text}</>);
 }

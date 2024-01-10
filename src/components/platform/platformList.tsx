@@ -9,8 +9,8 @@ class platformListData {
     }
 }
 
-export default function PlatformList(platformListData : Readonly<platformListData>) {
+export default function PlatformList(props : Readonly<platformListData>) {
     return <>
-        {platformListData.platforms.map(p => <div key={p.id} className={'m-1'}><PlatformListTile key={p.id} platform={p}/></div>)}
+        {props.platforms.map(p => <div key={p.id} className={'m-1'}><PlatformListTile key={p.id} platform={p}/></div>)}
     </>
 }
