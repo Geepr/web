@@ -2,13 +2,13 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import GameCreateDto from "../../models/gameCreateDto";
 import {createGame} from "../../clients/gameClient";
-import Creator, {CreatorChildData} from "../utils/creator";
+import Form, {FormChildData} from "../utils/form";
 import FormGroup from "../forms/formGroup";
 import FormLabel from "../forms/formLabel";
 import FormTextInput from "../forms/formTextInput";
 import FormTextAreaInput from "../forms/formTextAreaInput";
 
-function gameCreatorFormControls(props : Readonly<CreatorChildData<GameCreateDto>>) {
+function gameCreatorFormControls(props : Readonly<FormChildData<GameCreateDto>>) {
     const {formData, handleInputChange} = props;
 
     return <>
@@ -25,5 +25,5 @@ function gameCreatorFormControls(props : Readonly<CreatorChildData<GameCreateDto
 
 export default function GameCreator() {
     const navigate = useNavigate();
-    return <Creator<GameCreateDto> initialData={new GameCreateDto()} submit={createGame} onSuccess={(id : string) => (navigate(`/game/${id}`))} renderFormBody={gameCreatorFormControls}/>
+    return <Form<GameCreateDto> initialData={new GameCreateDto()} submit={createGame} onSuccess={(id : string) => (navigate(`/game/${id}`))} renderFormBody={gameCreatorFormControls}/>
 }

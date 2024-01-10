@@ -1,5 +1,5 @@
 import React from "react";
-import Creator, {CreatorChildData} from "../utils/creator";
+import Form, {FormChildData} from "../utils/form";
 import PlatformCreateDto from "../../models/platformCreateDto";
 import {createPlatform} from "../../clients/platformClient";
 import {useNavigate} from "react-router-dom";
@@ -7,7 +7,7 @@ import FormGroup from "../forms/formGroup";
 import FormLabel from "../forms/formLabel";
 import FormTextInput from "../forms/formTextInput";
 
-function platformCreatorFormControls(props : Readonly<CreatorChildData<PlatformCreateDto>>) {
+function platformCreatorFormControls(props : Readonly<FormChildData<PlatformCreateDto>>) {
     const {formData, handleInputChange} = props;
 
     return <>
@@ -24,5 +24,5 @@ function platformCreatorFormControls(props : Readonly<CreatorChildData<PlatformC
 
 export default function PlatformCreator() {
     const navigate = useNavigate();
-    return <Creator<PlatformCreateDto> initialData={new PlatformCreateDto()} submit={createPlatform} renderFormBody={platformCreatorFormControls} onSuccess={() => (navigate(-1))}/>
+    return <Form<PlatformCreateDto> initialData={new PlatformCreateDto()} submit={createPlatform} renderFormBody={platformCreatorFormControls} onSuccess={() => (navigate(-1))}/>
 }

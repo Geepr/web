@@ -12,8 +12,8 @@ export function useGamesFetch(page : number, filter : GameFilter) {
     return useObjectsFetch<Game>('v0/games', page, filter, json => json.games);
 }
 
-export function submitGameEdit(id : string, data : GameEditDto) {
-    return submitObjectEdit('v0/games', id, data);
+export function submitGameEdit(data : GameEditDto) {
+    return submitObjectEdit('v0/games', data.id, data);
 }
 
 export async function deleteGame(id : string) {

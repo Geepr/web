@@ -68,7 +68,7 @@ export async function submitObjectEdit<T>(endpoint : string, id : string, data :
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     });
-    return response.ok;
+    return {success: response.ok, id};
 }
 
 export async function createObject<T>(endpoint : string, data : T) {
