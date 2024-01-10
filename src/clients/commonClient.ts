@@ -1,10 +1,13 @@
 import {useEffect, useState} from "react";
 import {PaginationData, readPaginationDataFromJson} from "../components/pagination/paginationHelpers";
 import {validate as isValidUuid} from "uuid";
-import PlatformCreateDto from "../models/platformCreateDto";
 
 export interface ObjectFilter {
     getQueryString() : string;
+}
+
+function getGatewayUrl() {
+    return process.env.REACT_APP_GATEWAY_URL ?? 'http://localhost:5510/api';
 }
 
 export function useObjectsFetch<T>(apiEndpoint : string, page : number, filter : ObjectFilter, readObjects : (json : any) => T[]) {
@@ -16,7 +19,7 @@ export function useObjectsFetch<T>(apiEndpoint : string, page : number, filter :
         async function load() {
             try {
                 //todo: page size shouldn't be required here, really
-                const response = await fetch(`http://localhost:5510/api/${apiEndpoint}?page=${page}&pageSize=20&${filter.getQueryString()}`);
+                const response = await fetch(`${getGatewayUrl()}/${page}&pageSize=20&${filter.getQueryString()}`);
                 if (response.ok) {
                     const json = await response.json();
                     setPaginationData(readPaginationDataFromJson(json));
@@ -44,7 +47,7 @@ export function useObjectFetch<T>(apiEndpoint : string, uuid : string, readResul
             try {
                 if (!isValidUuid(uuid))//todo: show error
                     return;
-                const response = await fetch(`http://localhost:5510/api/${apiEndpoint}/${uuid}`);
+                const response = await fetch(`${getGatewayUrl()}/${apiEndpoint}/${uuid}`);
                 if (response.ok) {
                     const json = await response.json();
                     setResult(readResult(json));
@@ -63,7 +66,7 @@ export function useObjectFetch<T>(apiEndpoint : string, uuid : string, readResul
 }
 
 export async function submitObjectEdit<T>(endpoint : string, id : string, data : T) {
-    const response = await fetch(`http://localhost:5510/api/${endpoint}/${id}`, {
+    const response = await fetch(`${getGatewayUrl()}/${endpoint}/${id}`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
@@ -72,7 +75,7 @@ export async function submitObjectEdit<T>(endpoint : string, id : string, data :
 }
 
 export async function createObject<T>(endpoint : string, data : T) {
-    const response = await fetch(`http://localhost:5510/api/${endpoint}`, {
+    const response = await fetch(`${getGatewayUrl()}/${endpoint}`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
@@ -86,7 +89,7 @@ export async function createObject<T>(endpoint : string, data : T) {
 }
 
 export async function deleteObject(endpoint : string, id : string) {
-    const response = await fetch(`http://localhost:5510/api/${endpoint}/${id}`, {
+    const response = await fetch(`${getGatewayUrl()}/${endpoint}/${id}`, {
         method: 'delete',
     });
     return response.ok;
