@@ -12,7 +12,5 @@ export default function GameEditDisplayer() {
     if (game === undefined)
         return <div>Game not found...</div>
 
-    return <>
-        <GameEditForm game={game}/>
-    </>
+    return <GameEditForm game={game}/>
 }

@@ -10,8 +10,8 @@ export class FormChildData<FormData> {
 
 class formData<FormData> {
     public initialData : FormData = undefined!;
-    public submit : (data : FormData) => Promise<{success : boolean,  id : any | undefined}> = undefined!;
-    public onSuccess? : ((id : any | undefined) => void) = undefined!;
+    public submit : (data : FormData) => Promise<{success : boolean,  id : string | undefined}> = undefined!;
+    public onSuccess? : ((id : string | undefined) => void) = undefined!;
     public onError? : () => void = undefined!;
     public renderFormBody : (data : Readonly<FormChildData<FormData>>) => ReactElement = undefined!;
 }
@@ -34,7 +34,7 @@ export default function Form<FormData>(
         setSubmitInProgress(false);
         setSubmitSuccess(false);
     }
-    function completeSubmit(id: string) {
+    function completeSubmit(id: string | undefined) {
         onSuccess(id);
         setSubmitInProgress(false);
         setSubmitSuccess(true);

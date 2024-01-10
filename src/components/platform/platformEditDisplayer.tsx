@@ -12,7 +12,5 @@ export default function PlatformEditDisplayer() {
     if (platform === undefined)
         return <div>Platform not found...</div>
 
-    return <>
-        <PlatformEditForm platform={platform} />
-    </>
+    return <PlatformEditForm platform={platform} />
 }
