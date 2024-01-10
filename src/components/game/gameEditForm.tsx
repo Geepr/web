@@ -24,7 +24,7 @@ function gameEditFormControls({formData, handleInputChange} : Readonly<FormChild
         </FormGroup>
         <FormGroup>
             <FormLabel forId={'description'}>Description</FormLabel>
-            <FormTextAreaInput maxLength={2000} rows={5} id='description' placeholder="A brief description to say what it's about..." name='description' value={formData?.description} onChange={handleInputChange}/>
+            <FormTextAreaInput maxLength={2000} rows={5} id='description' placeholder="A brief description to say what it's about..." name='description' value={formData.description} onChange={handleInputChange}/>
         </FormGroup>
     </>
 }

@@ -3,7 +3,7 @@ import React from "react";
 class formTextInputData {
     public id : string = "";
     public name : string = "";
-    public value : string | undefined;
+    public value : string = "";
     public maxLength? : number = 1000;
     public minLength? : number = 0;
     public required? : boolean = false;

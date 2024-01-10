@@ -13,11 +13,11 @@ function platformCreatorFormControls(props : Readonly<FormChildData<PlatformCrea
     return <>
         <FormGroup>
             <FormLabel forId={'name'}>Name</FormLabel>
-            <FormTextInput id={'name'} name={'name'} maxLength={200} required={true} placeholder={'Name of your new platform'} value={formData?.name} onChange={handleInputChange}/>
+            <FormTextInput id={'name'} name={'name'} maxLength={200} required={true} placeholder={'Name of your new platform'} value={formData.name} onChange={handleInputChange}/>
         </FormGroup>
         <FormGroup>
             <FormLabel forId={'shortName'}>Short name</FormLabel>
-            <FormTextInput id={'shortName'} name={'shortName'} maxLength={10} required={true} placeholder={'Short name of your new platform...'} value={formData?.shortName} onChange={handleInputChange}/>
+            <FormTextInput id={'shortName'} name={'shortName'} maxLength={10} required={true} placeholder={'Short name of your new platform...'} value={formData.shortName} onChange={handleInputChange}/>
         </FormGroup>
     </>
 }

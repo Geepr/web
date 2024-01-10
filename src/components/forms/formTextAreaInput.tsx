@@ -3,7 +3,7 @@ import React from "react";
 class formTextAreaInputData {
     public id : string = undefined!;
     public name : string = undefined!;
-    public value : string | undefined;
+    public value : string = undefined!;
     public rows : number = undefined!;
     public maxLength? : number;
     public minLength? : number;
