@@ -109,7 +109,7 @@ test('Game list displayer filter applied', async () => {
     // eslint-disable-next-line testing-library/no-unnecessary-act
     await act(async () => fireEvent.change(screen.getByPlaceholderText('Game title...'), {target: {value: "title"}}));
 
-    expect(mockFetch).toBeCalledWith("http://localhost:5510/api/v0/games?page=1&pageSize=20&title=");
-    expect(mockFetch).toBeCalledWith("http://localhost:5510/api/v0/games?page=1&pageSize=20&title=title");
+    expect(mockFetch).toBeCalledWith("/api/v0/games?page=1&pageSize=20&title=");
+    expect(mockFetch).toBeCalledWith("/api/v0/games?page=1&pageSize=20&title=title");
     expect(mockFetch).toBeCalledTimes(2);
 })

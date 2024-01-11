@@ -119,7 +119,7 @@ test('Platform list displayer filter applied', async () => {
     // eslint-disable-next-line testing-library/no-unnecessary-act
     await act(async () => fireEvent.change(screen.getByPlaceholderText('Platform name...'), {target: {value: "name"}}));
 
-    expect(mockFetch).toBeCalledWith("http://localhost:5510/api/v0/platforms?page=1&pageSize=20&name=");
-    expect(mockFetch).toBeCalledWith("http://localhost:5510/api/v0/platforms?page=1&pageSize=20&name=name");
+    expect(mockFetch).toBeCalledWith("/api/v0/platforms?page=1&pageSize=20&name=");
+    expect(mockFetch).toBeCalledWith("/api/v0/platforms?page=1&pageSize=20&name=name");
     expect(mockFetch).toBeCalledTimes(2);
 })
