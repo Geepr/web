@@ -3,7 +3,7 @@ import {PaginationData, readPaginationDataFromJson} from "../components/paginati
 import {validate as isValidUuid} from "uuid";
 
 function getGatewayUrl() {
-    return process.env.REACT_APP_GATEWAY_URL ?? 'http://localhost:5510/api';
+    return process.env.REACT_APP_GATEWAY_URL ?? '/api';
 }
 
 export function useObjectsFetch<T>(apiEndpoint : string, page : number, queryString : string) {

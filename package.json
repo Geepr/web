@@ -66,5 +66,6 @@
     "storybook": "^7.5.3",
     "storybook-addon-react-router-v6": "^2.0.10",
     "webpack": "^5.89.0"
-  }
+  },
+  "proxy": "http://localhost:5510"
 }
