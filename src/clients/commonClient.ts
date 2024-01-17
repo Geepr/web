@@ -34,6 +34,22 @@ export function useObjectsFetch<T>(apiEndpoint : string, page : number, queryStr
     return {results, loading, paginationData};
 }
 
+export async function objectsPromiseFetch<T>(apiEndpoint : string, page : number, queryString : string) {
+    let results : T;
+    let paginationData : PaginationData;
+
+    const response = await fetch(`${getGatewayUrl()}/${apiEndpoint}?page=${page}&pageSize=20&${queryString}`);
+    if (response.ok) {
+        const json = await response.json();
+        paginationData = readPaginationDataFromJson(json);
+        results = json;
+    } else {
+        throw response;
+    }
+
+    return {results, paginationData};
+}
+
 export function useObjectFetch<T>(apiEndpoint : string, uuid : string) {
     const [result, setResult] = useState<T | undefined>();
     const [loading, setLoading] = useState(true);
