@@ -6,7 +6,7 @@ function getGatewayUrl() {
     return process.env.REACT_APP_GATEWAY_URL ?? '/api';
 }
 
-export function useObjectsFetch<T>(apiEndpoint : string, page : number, queryString : string) {
+export function useObjectsFetch<T>(apiEndpoint : string, page : number, queryString : string, pageSize : number = 20) {
     const [results, setResults] = useState<T | undefined>();
     const [loading, setLoading] = useState(true);
     const [paginationData, setPaginationData] = useState<PaginationData>();
@@ -14,8 +14,7 @@ export function useObjectsFetch<T>(apiEndpoint : string, page : number, queryStr
     useEffect(() => {
         async function load() {
             try {
-                //todo: page size shouldn't be required here, really
-                const response = await fetch(`${getGatewayUrl()}/${apiEndpoint}?page=${page}&pageSize=20&${queryString}`);
+                const response = await fetch(`${getGatewayUrl()}/${apiEndpoint}?page=${page}&pageSize=${pageSize}&${queryString}`);
                 if (response.ok) {
                     const json = await response.json();
                     setPaginationData(readPaginationDataFromJson(json));
