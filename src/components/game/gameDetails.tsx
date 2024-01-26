@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import {useGameFetch} from "../../clients/gameClient";
 import {Link, useParams} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRectangleXmark} from "@fortawesome/free-solid-svg-icons/faRectangleXmark";
 import {faPenToSquare} from "@fortawesome/free-solid-svg-icons/faPenToSquare";
 import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
+import GameReleasesPage from "./gameReleasesPage";
 
 export default function GameDetailsSideCar() {
     const {gameId} = useParams();
     const {result: game, loading} = useGameFetch(gameId!);
+    const [releasePages, setReleasePages] = useState<number[]>([1]);
 
     if (loading)
         return <div className='col-8'>Loading...</div>
@@ -30,6 +32,14 @@ export default function GameDetailsSideCar() {
                         <div className='col-12'>
                             <span className='text-break'>{game.description}</span>
                         </div>
+                    </div>
+                    <div className={'row ms-1'}>
+                        <div className={'col-12 mt-3'}>
+                            <h6>Releases</h6>
+                        </div>
+                        {releasePages.map((releasePage) => (
+                            <GameReleasesPage showLoadMore={releasePage === releasePages.length} game={game} page={releasePage} loadMoreCallback={(requestedPage) => setReleasePages(currentPages => [...currentPages, requestedPage])}/>
+                        ))}
                     </div>
                 </div>
                 <div className='col-1 d-flex pe-0'>

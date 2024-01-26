@@ -8,7 +8,7 @@ class props {
 }
 
 export default function GameReleaseBox({release, game} : Readonly<props>) {
-    return <div className={'col-12 col-sm-4 border border-info'}>
+    return <div className={'col-12 border border-info'}>
         <span className={'text-break p-2'}>{release.titleOverride ?? game.title}</span>
     </div>
 }

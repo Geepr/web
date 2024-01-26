@@ -4,6 +4,6 @@ import GameRelease from "../models/gameRelease";
 /**
  * Fetches all releases for the given game.
  */
-export function useReleasesFetch(gameId : string) {
-    return useObjectsFetch<{releases : GameRelease[]}>('v0/releases', 1, `gameId=${gameId}`);
+export function useReleasesFetch(gameId : string, page : number) {
+    return useObjectsFetch<{releases : GameRelease[]}>('v0/releases', page, `gameId=${gameId}`, 10);
 }
