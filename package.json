@@ -56,7 +56,7 @@
     "@storybook/addon-onboarding": "^1.0.10",
     "@storybook/blocks": "^7.6.7",
     "@storybook/preset-create-react-app": "^7.6.12",
-    "@storybook/react": "^7.6.10",
+    "@storybook/react": "^7.6.14",
     "@storybook/react-webpack5": "^7.6.12",
     "@storybook/testing-library": "^0.2.2",
     "@types/uuid": "^9.0.8",
